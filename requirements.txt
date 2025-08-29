@@ -1,3 +1,10 @@
+# Flask web framework,應用核心
+# 寫的 web app 框架，用來定義路由（例如 /callback）、處理請求（POST、GET）、回傳資料等
 flask
+
+# Line Bot SDK (v3),如果拿掉==3.*,會裝最新版,避免不預期的錯誤會指定版本
 line-bot-sdk==3.*
+
+# For production（正式環境） server
+# 專門設計來跑 WSGI 應用的伺服器，它會呼叫 Flask 建立的 app 實例，幫你處理多工、網路等繁重的底層任務
 gunicorn
