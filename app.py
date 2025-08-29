@@ -1,5 +1,5 @@
 # https://github.com/line/line-bot-sdk-python->Synopsis
-
+import os                                # 在 Render 使用環境變數
 from flask import Flask, request, abort
 
 from linebot.v3 import (
@@ -60,4 +60,5 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000)) # 加入 port（配合Render 需要）
     app.run(host="0.0.0.0", port=port)       # 加入 port（配合Render 需要）
     # app.run()      # 預設5000 
+
 
