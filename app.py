@@ -22,8 +22,8 @@ from linebot.v3.webhooks import (
 
 app = Flask(__name__)
 
-configuration = Configuration(access_token='3uCp6ADwnZ0RB+SiooROBOOmpWb32rip0H02Osm2nSAOYxdg1ig1ivyLRhWJE1pVRyZeetSlcNZIxrLkLFk37Nv3xwhaRemRhTvoDjVBmd0rGRb4PiDXOvy/6LBeiRkkIAoyK95lb1Wvxj1gc7+EkAdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('ec4b665efa1e09b9d3a7b3bda95ac34e')
+configuration = Configuration(access_token=os.getenv("LINE_CHANNEL_ACCESS_TOKEN")) # 在 Render 上設定這兩個環境變數
+handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))                         # 在 Render 上設定這兩個環境變數
 
 
 @app.route("/callback", methods=['POST'])
@@ -57,5 +57,7 @@ def handle_message(event):
         )
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000)) # 加入 port（配合Render 需要）
+    app.run(host="0.0.0.0", port=port)       # 加入 port（配合Render 需要）
+    # app.run()      # 預設5000 
 
-    app.run()      # 預設5000
